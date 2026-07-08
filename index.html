@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>p5.js 学習問題集</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>p5.js 学習問題集</h1>
+  </header>
+
+  <main class="app-layout">
+    <aside class="sidebar">
+      <section>
+        <h2>章一覧</h2>
+        <ul id="chapterList"></ul>
+      </section>
+
+      <section>
+        <h2>問題一覧</h2>
+        <ul id="problemList"></ul>
+      </section>
+    </aside>
+
+    <section class="main-panel">
+      <div class="problem-panel">
+        <h2 id="problemTitle">問題タイトル</h2>
+        <p id="problemDescription">ここに問題文が表示されます。</p>
+      </div>
+
+      <div class="editor-panel">
+        <div class="editor-header">sketch.js / draw() の中身</div>
+        <textarea id="codeEditor"></textarea>
+      </div>
+
+      <div class="button-row">
+        <button id="runButton">実行して判定</button>
+        <button id="answerButton">模範解答</button>
+        <button id="resetButton">リセット</button>
+      </div>
+
+      <div class="result-panel">
+        <p id="resultMessage">判定結果がここに表示されます。</p>
+      </div>
+    </section>
+
+    <section class="preview-panel">
+      <div class="preview-box">
+        <h2>あなたの実行結果</h2>
+        <div id="previewCanvas"></div>
+      </div>
+
+      <div class="preview-box">
+        <h2>正解の見本</h2>
+        <div id="answerCanvas"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+  <script src="js/problemLoader.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/judge.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
