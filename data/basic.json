@@ -4,15 +4,9 @@
     "type": "fix-code",
     "title": "円を描く",
     "description": "中央に直径50の円が描かれるように修正してください。",
+    "hint": "円を描く関数名を見直しましょう。",
     "starterCode": "background(220);\ncircl(160, 160, 50);",
-    "answerCode": "background(220);\ncircle(160, 160, 50);"
-  },
-  {
-    "id": "basic-2",
-    "type": "fix-code",
-    "title": "図形関数を修正する",
-    "description": "この問題は円を描く問題です。しかし現在は三角形を描く関数になっています。中央に直径80の円が描かれるように修正してください。",
-    "starterCode": "background(220);\ntriangle(120, 220, 200, 220, 160, 140);",
-    "answerCode": "background(220);\ncircle(160, 160, 80);"
+    "answerCode": "background(220);\ncircle(160, 160, 50);",
+    "explanation": "circle() が正しい関数名です。"
   }
 ]

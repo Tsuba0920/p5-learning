@@ -17,17 +17,48 @@ function makeGraphicsAPI(g) {
 
 function executeBodyOnGraphics(body, g) {
   const api = makeGraphicsAPI(g);
-  const fn = new Function(
-    "g",
-    ...Object.keys(api),
-    body
-  );
+  const fn = new Function("g", ...Object.keys(api), body);
   fn(g, ...Object.values(api));
 }
 
 function clearGraphics(g) {
+  if (!g) return;
   g.clear();
   g.background(255);
   g.fill(255);
   g.stroke(0);
+}
+
+function setupP5Canvases() {
+  appState.previewP5 = new p5((p) => {
+    p.setup = () => {
+      const c = p.createCanvas(320, 320);
+      c.parent("previewCanvas");
+      appState.previewGraphics = p.createGraphics(320, 320);
+      clearGraphics(appState.previewGraphics);
+    };
+
+    p.draw = () => {
+      p.background(255);
+      if (appState.previewGraphics) {
+        p.image(appState.previewGraphics, 0, 0);
+      }
+    };
+  });
+
+  appState.answerP5 = new p5((p) => {
+    p.setup = () => {
+      const c = p.createCanvas(320, 320);
+      c.parent("answerCanvas");
+      appState.answerGraphics = p.createGraphics(320, 320);
+      clearGraphics(appState.answerGraphics);
+    };
+
+    p.draw = () => {
+      p.background(255);
+      if (appState.answerGraphics) {
+        p.image(appState.answerGraphics, 0, 0);
+      }
+    };
+  });
 }

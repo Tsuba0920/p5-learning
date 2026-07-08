@@ -1,0 +1,12 @@
+[
+  {
+    "id": "array-1",
+    "type": "predict-output",
+    "title": "配列の要素を予想する",
+    "description": "let a = [10, 20, 30]; のとき、a[1] の値を答えてください。",
+    "hint": "配列の添字は 0 から始まります。",
+    "prompt": "答えを入力してください",
+    "correctText": "20",
+    "explanation": "a[0] が 10、a[1] が 20、a[2] が 30 です。"
+  }
+]

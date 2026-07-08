@@ -30,19 +30,37 @@
         <p id="problemDescription">ここに問題文が表示されます。</p>
       </div>
 
-      <div class="editor-panel">
-        <div class="editor-header">sketch.js / draw() の中身</div>
+      <div id="editorArea" class="editor-panel">
+        <div class="editor-header">コード入力</div>
         <textarea id="codeEditor"></textarea>
       </div>
 
+      <div id="choiceArea" class="choice-panel hidden">
+        <div class="choice-header">選択肢</div>
+        <div id="choiceList"></div>
+      </div>
+
+      <div id="predictArea" class="predict-panel hidden">
+        <div class="predict-header">回答入力</div>
+        <input id="predictInput" type="text" placeholder="答えを入力してください" />
+      </div>
+
       <div class="button-row">
-        <button id="runButton">実行して判定</button>
+        <button id="prevProblemButton">前の問題</button>
+        <button id="nextProblemButton">次の問題</button>
+        <button id="runButton">判定する</button>
+        <button id="hintButton">ヒントを見る</button>
         <button id="answerButton">模範解答</button>
         <button id="resetButton">リセット</button>
       </div>
 
+      <div class="hint-panel">
+        <p id="hintMessage">ヒントはまだ表示されていません。</p>
+      </div>
+
       <div class="result-panel">
         <p id="resultMessage">判定結果がここに表示されます。</p>
+        <p id="explanationMessage"></p>
       </div>
     </section>
 
@@ -60,9 +78,11 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+  <script src="js/state.js"></script>
   <script src="js/problemLoader.js"></script>
   <script src="js/renderer.js"></script>
   <script src="js/judge.js"></script>
+  <script src="js/ui.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

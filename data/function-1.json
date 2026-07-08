@@ -1,0 +1,12 @@
+[
+  {
+    "id": "function-1-1",
+    "type": "full-code",
+    "title": "関数定義を修正する",
+    "description": "drawCircle という関数を正しく定義し、円が描かれるように修正してください。",
+    "hint": "関数の定義名と呼び出し名が一致しているか見てください。",
+    "starterCode": "background(220);\nfunction drawCircl() {\n  circle(160, 160, 50);\n}\ndrawCircle();",
+    "answerCode": "background(220);\nfunction drawCircle() {\n  circle(160, 160, 50);\n}\ndrawCircle();",
+    "explanation": "drawCircle という名前で定義し、同じ名前で呼び出す必要があります。"
+  }
+]

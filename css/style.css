@@ -32,12 +32,6 @@ body {
   box-sizing: border-box;
 }
 
-.sidebar h2,
-.main-panel h2,
-.preview-panel h2 {
-  margin-top: 0;
-}
-
 #chapterList,
 #problemList {
   list-style: none;
@@ -59,15 +53,13 @@ body {
   background: #ddd;
 }
 
-.problem-panel {
-  margin-bottom: 16px;
+.active-item {
+  background: #cfe8ff !important;
 }
 
-.editor-panel {
-  margin-bottom: 16px;
-}
-
-.editor-header {
+.editor-header,
+.choice-header,
+.predict-header {
   background: #333;
   color: white;
   padding: 8px 12px;
@@ -90,10 +82,50 @@ body {
   border-radius: 0 0 6px 6px;
 }
 
+.choice-panel,
+.predict-panel,
+.editor-panel {
+  margin-bottom: 16px;
+}
+
+#choiceList {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+.choice-item {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 10px;
+  text-align: left;
+  background: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.choice-item.selected {
+  background: #d7ebff;
+}
+
+#predictInput {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  font-size: 16px;
+}
+
 .button-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 16px;
+  margin: 16px 0;
 }
 
 button {
@@ -109,14 +141,17 @@ button:hover {
   background: #125aa0;
 }
 
+.hint-panel {
+  padding: 12px;
+  background: #fff8e1;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
 .result-panel {
   padding: 12px;
   background: #f0f7ff;
   border-radius: 6px;
-}
-
-.preview-box {
-  margin-bottom: 24px;
 }
 
 #previewCanvas,
@@ -125,4 +160,9 @@ button:hover {
   height: 320px;
   border: 1px solid #ccc;
   background: white;
+  margin-bottom: 16px;
+}
+
+.hidden {
+  display: none;
 }

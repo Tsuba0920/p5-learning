@@ -5,3 +5,11 @@ async function loadJSON(path) {
   }
   return await response.json();
 }
+
+async function loadChapters() {
+  return await loadJSON("data/chapters.json");
+}
+
+async function loadProblemsByChapter(chapterId) {
+  return await loadJSON(`data/${chapterId}.json`);
+}
