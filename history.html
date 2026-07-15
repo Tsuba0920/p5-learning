@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>解答履歴</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>解答履歴</h1>
+  </header>
+
+  <main style="padding: 16px;">
+    <div class="main-panel" style="max-width: 900px; margin: 0 auto;">
+      <div class="button-row">
+        <button onclick="location.href='index.html'">問題ページに戻る</button>
+        <button id="clearHistoryButton">履歴を消す</button>
+      </div>
+
+      <div id="historyContainer"></div>
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/history.js"></script>
+</body>
+</html>

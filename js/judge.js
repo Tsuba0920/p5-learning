@@ -28,19 +28,24 @@ function judgeCode(problem, userCode) {
   clearGraphics(appState.previewGraphics);
   clearGraphics(appState.answerGraphics);
 
-  try {
-    executeBodyOnGraphics(userCode, appState.previewGraphics);
-  } catch (e) {
-    return { ok: false, message: `エラー: ${e.message}` };
-  }
-
+  // 先に正解の見本を描画しておく
   try {
     executeBodyOnGraphics(problem.answerCode, appState.answerGraphics);
   } catch (e) {
     return { ok: false, message: `内部エラー: ${e.message}` };
   }
 
-  const diff = calculateImageDifference(appState.previewGraphics, appState.answerGraphics);
+  // 次にユーザーコードを実行する
+  try {
+    executeBodyOnGraphics(userCode, appState.previewGraphics);
+  } catch (e) {
+    return { ok: false, message: `エラー: ${e.message}` };
+  }
+
+  const diff = calculateImageDifference(
+    appState.previewGraphics,
+    appState.answerGraphics
+  );
 
   if (diff < 5) {
     return { ok: true, message: `正解！ 画像差分: ${diff.toFixed(2)}` };

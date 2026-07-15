@@ -50,17 +50,18 @@
         <button id="nextProblemButton">次の問題</button>
         <button id="runButton">判定する</button>
         <button id="hintButton">ヒントを見る</button>
-        <button id="answerButton">模範解答</button>
+        <button id="answerButton" class="hidden">模範解答を見る</button>
         <button id="resetButton">リセット</button>
+        <button id="historyPageButton" onclick="location.href='history.html'">履歴を見る</button>
+      </div>
+
+      <div id="resultPanel" class="result-panel result-neutral">
+        <p id="resultMessage" class="result-status">未判定</p>
+        <p id="explanationMessage" class="result-detail">ここに判定結果の詳細や解説が表示されます。</p>
       </div>
 
       <div class="hint-panel">
         <p id="hintMessage">ヒントはまだ表示されていません。</p>
-      </div>
-
-      <div class="result-panel">
-        <p id="resultMessage">判定結果がここに表示されます。</p>
-        <p id="explanationMessage"></p>
       </div>
     </section>
 
@@ -82,6 +83,7 @@
   <script src="js/problemLoader.js"></script>
   <script src="js/renderer.js"></script>
   <script src="js/judge.js"></script>
+  <script src="js/storage.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/app.js"></script>
 </body>

@@ -1,5 +1,6 @@
 function makeGraphicsAPI(g) {
   return {
+    createCanvas: (...args) => {},
     background: (...args) => g.background(...args),
     circle: (...args) => g.circle(...args),
     ellipse: (...args) => g.ellipse(...args),

@@ -4,6 +4,7 @@ const problemTitleEl = document.getElementById("problemTitle");
 const problemDescriptionEl = document.getElementById("problemDescription");
 const codeEditorEl = document.getElementById("codeEditor");
 const hintMessageEl = document.getElementById("hintMessage");
+const resultPanelEl = document.getElementById("resultPanel");
 const resultMessageEl = document.getElementById("resultMessage");
 const explanationMessageEl = document.getElementById("explanationMessage");
 
@@ -42,9 +43,27 @@ function renderChapterList() {
 function renderProblemList() {
   problemListEl.innerHTML = "";
 
+  const progress = typeof loadProgress === "function"
+    ? loadProgress()
+    : { solved: {}, attempts: {} };
+
   appState.currentProblems.forEach((problem, index) => {
     const li = document.createElement("li");
-    li.textContent = problem.title;
+
+    let mark = "";
+    const isSolved = progress.solved && progress.solved[problem.id];
+    const hasAttempted =
+      progress.attempts &&
+      progress.attempts[problem.id] &&
+      progress.attempts[problem.id] > 0;
+
+    if (isSolved) {
+      mark = "✅ ";
+    } else if (hasAttempted) {
+      mark = "❌ ";
+    }
+
+    li.textContent = mark + problem.title;
 
     if (index === appState.currentProblemIndex) {
       li.classList.add("active-item");
@@ -67,15 +86,17 @@ function renderProblem() {
   problemTitleEl.textContent = problem.title;
   problemDescriptionEl.textContent = problem.description;
   hintMessageEl.textContent = "ヒントはまだ表示されていません。";
-  resultMessageEl.textContent = "判定結果がここに表示されます。";
-  explanationMessageEl.textContent = "";
+  setResultState("neutral", "未判定", "ここに判定結果の詳細や解説が表示されます。");
 
   clearGraphics(appState.previewGraphics);
   clearGraphics(appState.answerGraphics);
 
+  answerButton.classList.add("hidden");
+
   renderByType(problem);
   renderChapterList();
   renderProblemList();
+  renderAnswerPreview(problem);
 }
 
 function renderByType(problem) {
@@ -115,6 +136,8 @@ function renderChoices(problem) {
 
     choiceListEl.appendChild(button);
   });
+
+  clearChoiceAnswerColors();
 }
 
 function updateChoiceSelection() {
@@ -126,5 +149,57 @@ function updateChoiceSelection() {
     } else {
       btn.classList.remove("selected");
     }
+  });
+}
+
+function renderAnswerPreview(problem) {
+  clearGraphics(appState.answerGraphics);
+
+  if (problem.type === "fix-code" || problem.type === "full-code") {
+    try {
+      executeBodyOnGraphics(problem.answerCode, appState.answerGraphics);
+    } catch (e) {
+      console.error("正解プレビュー描画エラー:", e);
+    }
+  }
+}
+
+function setResultState(state, message, detail = "") {
+  resultPanelEl.classList.remove("result-neutral", "result-correct", "result-wrong");
+
+  if (state === "correct") {
+    resultPanelEl.classList.add("result-correct");
+  } else if (state === "wrong") {
+    resultPanelEl.classList.add("result-wrong");
+  } else {
+    resultPanelEl.classList.add("result-neutral");
+  }
+
+  resultMessageEl.textContent = message;
+  explanationMessageEl.textContent = detail;
+}
+
+function showChoiceAnswerColors(problem) {
+  const buttons = choiceListEl.querySelectorAll(".choice-item");
+
+  buttons.forEach((btn, index) => {
+    btn.classList.remove("choice-correct", "choice-wrong");
+
+    if (index === problem.answerIndex) {
+      btn.classList.add("choice-correct");
+    } else if (
+      appState.selectedChoiceIndex !== null &&
+      index === appState.selectedChoiceIndex &&
+      index !== problem.answerIndex
+    ) {
+      btn.classList.add("choice-wrong");
+    }
+  });
+}
+
+function clearChoiceAnswerColors() {
+  const buttons = choiceListEl.querySelectorAll(".choice-item");
+  buttons.forEach((btn) => {
+    btn.classList.remove("choice-correct", "choice-wrong");
   });
 }
