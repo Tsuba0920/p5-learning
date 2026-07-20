@@ -1,0 +1,129 @@
+[
+  {
+    "id": "ch9-1",
+    "type": "choice",
+    "title": "マウスが押されているか",
+    "description": "マウスボタンが押されているかどうかを表す特別な変数はどれですか？",
+    "choices": [
+      "mouseButton",
+      "mouseX",
+      "mouseIsPressed",
+      "keyIsPressed"
+    ],
+    "correctAnswer": 2,
+    "hint": "true / false で表される変数です。",
+    "explanation": "mouseIsPressed は、マウスボタンが押されていれば true、押されていなければ false になります。"
+  },
+  {
+    "id": "ch9-2",
+    "type": "choice",
+    "title": "マウスの位置",
+    "description": "現在のマウスポインタの x 座標を表す特別な変数はどれですか？",
+    "choices": [
+      "mouseY",
+      "mouseX",
+      "mouseButton",
+      "width"
+    ],
+    "correctAnswer": 1,
+    "hint": "x 座標と y 座標の2つがあります。",
+    "explanation": "mouseX は現在のマウスポインタの x 座標を表します。y 座標は mouseY です。"
+  },
+  {
+    "id": "ch9-3",
+    "type": "choice",
+    "title": "左クリックの判定",
+    "description": "左クリックかどうかを判定する条件として正しいものはどれですか？",
+    "choices": [
+      "mouseButton == \"LEFT\"",
+      "mouseButton == LEFT",
+      "mouseButton = LEFT",
+      "mouseIsPressed == LEFT"
+    ],
+    "correctAnswer": 1,
+    "hint": "LEFT は文字列ではありません。",
+    "explanation": "LEFT は特別な定数なので、引用符を付けずに mouseButton == LEFT と書きます。"
+  },
+  {
+    "id": "ch9-4",
+    "type": "fix-code",
+    "title": "クリックしたときだけ円を描く",
+    "description": "下のコードは、マウスが押されたときだけ円を描きたいプログラムです。まちがいを直してください。",
+    "starterCode": "function setup() {\n  createCanvas(300, 300);\n  background(220);\n}\n\nfunction draw() {\n  if (mouseIsPressed = true) {\n    circle(mouseX, mouseY, 20);\n  }\n}",
+    "answerCode": "function setup() {\n  createCanvas(300, 300);\n  background(220);\n}\n\nfunction draw() {\n  if (mouseIsPressed == true) {\n    circle(mouseX, mouseY, 20);\n  }\n}",
+    "judgeMode": "code-exact",
+    "hint": "= と == の違いに注意しましょう。",
+    "explanation": "条件の比較には = ではなく == を使います。なお、if (mouseIsPressed) と省略して書くこともできます。"
+  },
+  {
+    "id": "ch9-5",
+    "type": "predict-output",
+    "title": "key の値",
+    "description": "a キーが押されているとき、特別な変数 key に入る値は何ですか？",
+    "starterCode": "if (keyIsPressed) {\n  print(key);\n}",
+    "correctAnswer": "a",
+    "hint": "key には押されたキーの文字列が入ります。",
+    "explanation": "a キーが押されると、key には文字列の a が入ります。"
+  },
+  {
+    "id": "ch9-6",
+    "type": "choice",
+    "title": "キー入力の判定",
+    "description": "キーが押されているかどうかを表す特別な変数はどれですか？",
+    "choices": [
+      "key",
+      "keyCode",
+      "keyIsPressed",
+      "mouseIsPressed"
+    ],
+    "correctAnswer": 2,
+    "hint": "mouseIsPressed のキー入力版です。",
+    "explanation": "keyIsPressed は、何かキーが押されていれば true、押されていなければ false になります。"
+  },
+  {
+    "id": "ch9-7",
+    "type": "fix-code",
+    "title": "r キーで赤くする",
+    "description": "下のコードは、r キーが押されているとき円を赤くしたいプログラムです。まちがいを直してください。",
+    "starterCode": "function setup() {\n  createCanvas(300, 300);\n}\n\nfunction draw() {\n  background(220);\n  if (keyIsPressed) {\n    if (key == r) {\n      fill(255, 0, 0);\n    }\n  }\n  circle(150, 150, 100);\n}",
+    "answerCode": "function setup() {\n  createCanvas(300, 300);\n}\n\nfunction draw() {\n  background(220);\n  if (keyIsPressed) {\n    if (key == 'r') {\n      fill(255, 0, 0);\n    }\n  }\n  circle(150, 150, 100);\n}",
+    "judgeMode": "code-exact",
+    "hint": "key の値は文字列です。",
+    "explanation": "key には文字列が入るので、'r' のように引用符で囲って比較する必要があります。"
+  },
+  {
+    "id": "ch9-8",
+    "type": "predict-output",
+    "title": "parseInt の結果",
+    "description": "次のコードで print される値は何ですか？",
+    "starterCode": "let str_digit = '2';\nlet digit = parseInt(str_digit);\nprint(digit + 10);",
+    "correctAnswer": "12",
+    "hint": "文字列の '2' を数値の 2 に変換しています。",
+    "explanation": "parseInt('2') で数値の 2 になるので、2 + 10 = 12 です。"
+  },
+  {
+    "id": "ch9-9",
+    "type": "choice",
+    "title": "最後に押したキーの情報",
+    "description": "key に入っている値について正しい説明はどれですか？",
+    "choices": [
+      "今押しているキーだけが入り、離すとすぐ消える",
+      "最後に入力されたキーの情報が残る",
+      "必ず数字として入る",
+      "マウスの位置が入る"
+    ],
+    "correctAnswer": 1,
+    "hint": "教材では「最後に入力された情報」と説明されていました。",
+    "explanation": "key には最後に入力されたキーの情報が残ります。そのため、keyIsPressed と組み合わせて使うことが大切です。"
+  },
+  {
+    "id": "ch9-10",
+    "type": "full-code",
+    "title": "クリック位置に円を描く",
+    "description": "マウスが押されているとき、マウスの位置に円を描くプログラムです。完成形を確認しましょう。",
+    "starterCode": "function setup() {\n  createCanvas(300, 300);\n  background(220);\n}\n\nfunction draw() {\n  if (mouseIsPressed) {\n    circle(mouseX, mouseY, 20);\n  }\n}",
+    "answerCode": "function setup() {\n  createCanvas(300, 300);\n  background(220);\n}\n\nfunction draw() {\n  if (mouseIsPressed) {\n    circle(mouseX, mouseY, 20);\n  }\n}",
+    "hint": "mouseIsPressed、mouseX、mouseY の3つがポイントです。",
+    "explanation": "mouseIsPressed が true のときだけ、現在のマウスポインタ位置 mouseX, mouseY に円を描いています。"
+  }
+]

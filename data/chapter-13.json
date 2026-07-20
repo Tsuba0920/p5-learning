@@ -1,0 +1,129 @@
+[
+  {
+    "id": "ch13-1",
+    "type": "choice",
+    "title": "プロパティとは",
+    "description": "次のうち、プロパティの例として正しいものはどれですか？",
+    "choices": [
+      "numList.push(5)",
+      "numList.length",
+      "toUpperCase()",
+      "new Date()"
+    ],
+    "correctAnswer": 1,
+    "hint": "length は配列や文字列の属性を表します。",
+    "explanation": "numList.length は配列の長さを表すプロパティです。push() はメソッドです。"
+  },
+  {
+    "id": "ch13-2",
+    "type": "choice",
+    "title": "メソッドとは",
+    "description": "次のうち、メソッドの例として正しいものはどれですか？",
+    "choices": [
+      "str.length",
+      "numList.length",
+      "numList.push(5)",
+      "this.x"
+    ],
+    "correctAnswer": 2,
+    "hint": "メソッドは『操作』で、() が付くことが多いです。",
+    "explanation": "numList.push(5) は配列の末尾に要素を追加するメソッドです。"
+  },
+  {
+    "id": "ch13-3",
+    "type": "predict-output",
+    "title": "文字列の length",
+    "description": "次のコードで print される値は何ですか？",
+    "starterCode": "let str = \"string\";\nprint(str.length);",
+    "correctAnswer": "6",
+    "hint": "string は6文字です。",
+    "explanation": "文字列 \"string\" は 6 文字なので、str.length は 6 です。"
+  },
+  {
+    "id": "ch13-4",
+    "type": "predict-output",
+    "title": "toUpperCase() の結果",
+    "description": "次のコードで print される値は何ですか？",
+    "starterCode": "let str = \"string\";\nprint(str.toUpperCase());",
+    "correctAnswer": "STRING",
+    "hint": "小文字を大文字に変えるメソッドです。",
+    "explanation": "toUpperCase() は文字列を大文字に変換するので、\"STRING\" が表示されます。"
+  },
+  {
+    "id": "ch13-5",
+    "type": "choice",
+    "title": "インスタンス生成",
+    "description": "Date クラスのインスタンスを生成する正しい書き方はどれですか？",
+    "choices": [
+      "let day = Date();",
+      "let day = new Date();",
+      "let day = class Date();",
+      "let day = make Date();"
+    ],
+    "correctAnswer": 1,
+    "hint": "通常の組み込みクラスは new を使います。",
+    "explanation": "Date クラスのインスタンスは new Date() で生成します。"
+  },
+  {
+    "id": "ch13-6",
+    "type": "choice",
+    "title": "クラス定義の始まり",
+    "description": "自作クラスを定義するとき、先頭に書くキーワードはどれですか？",
+    "choices": [
+      "function",
+      "let",
+      "class",
+      "new"
+    ],
+    "correctAnswer": 2,
+    "hint": "関数ではなくクラスを定義します。",
+    "explanation": "自作クラスは class クラス名 { ... } の形で定義します。"
+  },
+  {
+    "id": "ch13-7",
+    "type": "fix-code",
+    "title": "constructor に直す",
+    "description": "下のコードはクラスのコンストラクタを定義したいプログラムです。まちがいを直してください。",
+    "starterCode": "class MyCircle {\n  function constructor() {\n    this.x = 0;\n  }\n}",
+    "answerCode": "class MyCircle {\n  constructor() {\n    this.x = 0;\n  }\n}",
+    "judgeMode": "code-exact",
+    "hint": "クラスの中の constructor には function を付けません。",
+    "explanation": "クラス内のメソッドや constructor では function を書きません。constructor() { ... } と書きます。"
+  },
+  {
+    "id": "ch13-8",
+    "type": "fix-code",
+    "title": "this を使ってプロパティ定義",
+    "description": "下のコードは x というプロパティを作りたいプログラムです。まちがいを直してください。",
+    "starterCode": "class MyCircle {\n  constructor() {\n    x = 0;\n  }\n}",
+    "answerCode": "class MyCircle {\n  constructor() {\n    this.x = 0;\n  }\n}",
+    "judgeMode": "code-exact",
+    "hint": "プロパティは this.名前 の形で定義します。",
+    "explanation": "クラスのプロパティは this.x = 0; のように this を付けて定義します。"
+  },
+  {
+    "id": "ch13-9",
+    "type": "choice",
+    "title": "メソッド呼び出し",
+    "description": "MyCircle クラスのインスタンス mc の update メソッドを呼び出す正しい書き方はどれですか？",
+    "choices": [
+      "update(mc);",
+      "mc.update();",
+      "mc->update();",
+      "MyCircle.update(mc);"
+    ],
+    "correctAnswer": 1,
+    "hint": "インスタンス名.メソッド名() の形です。",
+    "explanation": "メソッドは インスタンス名.メソッド名() の形で呼び出します。したがって mc.update(); が正しいです。"
+  },
+  {
+    "id": "ch13-10",
+    "type": "full-code",
+    "title": "クラスを使った円の移動",
+    "description": "MyCircle クラスを定義し、インスタンス mc を使って円を動かす完成形コードです。クラス・プロパティ・メソッドの流れを確認しましょう。",
+    "starterCode": "let mc;\n\nfunction setup() {\n  createCanvas(500, 100);\n  mc = new MyCircle();\n}\n\nfunction draw() {\n  background(220);\n  if (keyIsPressed) {\n    mc.update();\n  }\n  mc.draw();\n}\n\nclass MyCircle {\n  constructor() {\n    this.x = 0;\n  }\n\n  update() {\n    this.x += 5;\n    if (this.x >= width) {\n      this.x = 0;\n    }\n  }\n\n  draw() {\n    circle(this.x, height / 2, 50);\n  }\n}",
+    "answerCode": "let mc;\n\nfunction setup() {\n  createCanvas(500, 100);\n  mc = new MyCircle();\n}\n\nfunction draw() {\n  background(220);\n  if (keyIsPressed) {\n    mc.update();\n  }\n  mc.draw();\n}\n\nclass MyCircle {\n  constructor() {\n    this.x = 0;\n  }\n\n  update() {\n    this.x += 5;\n    if (this.x >= width) {\n      this.x = 0;\n    }\n  }\n\n  draw() {\n    circle(this.x, height / 2, 50);\n  }\n}",
+    "hint": "new でインスタンスを作り、mc.update() と mc.draw() を呼びます。",
+    "explanation": "このコードでは、MyCircle クラスの中でプロパティ this.x とメソッド update(), draw() を定義し、外側では mc というインスタンスを生成して利用しています。"
+  }
+]

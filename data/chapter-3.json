@@ -1,0 +1,112 @@
+[
+  {
+    "id": "ch3-1",
+    "type": "fix-code",
+    "title": "足し算で位置をずらす",
+    "description": "x の値が 100 から 150 になるように修正してください。",
+    "hint": "100 に 50 を足します。",
+    "starterCode": "let x = 100 - 50;\ncircle(x, 100, 40);",
+    "answerCode": "let x = 100 + 50;\ncircle(x, 100, 40);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch3-2",
+    "type": "fix-code",
+    "title": "割り算で中央を求める",
+    "description": "width と height を使って、円がキャンバス中央に描かれるように修正してください。",
+    "hint": "中央は 2 で割って求めます。",
+    "starterCode": "createCanvas(300, 300);\nbackground(220);\ncircle(width, height, 80);",
+    "answerCode": "createCanvas(300, 300);\nbackground(220);\ncircle(width / 2, height / 2, 80);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch3-3",
+    "type": "fix-code",
+    "title": "加算代入を修正する",
+    "description": "変数 x の値を 5 増やすように修正してください。",
+    "hint": "x に 5 を足して代入するには += を使います。",
+    "starterCode": "let x = 10;\nx =+ 5;",
+    "answerCode": "let x = 10;\nx += 5;",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch3-4",
+    "type": "fix-code",
+    "title": "掛け算で大きさを変える",
+    "description": "直径が 40 の円になるように修正してください。",
+    "hint": "20 を 2 倍します。",
+    "starterCode": "let dia = 20 / 2;\ncircle(100, 100, dia);",
+    "answerCode": "let dia = 20 * 2;\ncircle(100, 100, dia);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch3-5",
+    "type": "choice",
+    "title": "計算順序",
+    "description": "次のうち、掛け算が足し算より先に計算される式はどれですか？",
+    "hint": "算数と同じ優先順位です。",
+    "choices": [
+      "10 + 5 * 2",
+      "(10 + 5) * 2",
+      "10 + (5 * 2)",
+      "どれも同じ"
+    ],
+    "correctAnswer": 0,
+    "explanation": "通常は掛け算・割り算が足し算・引き算より先に計算されます。"
+  },
+  {
+    "id": "ch3-6",
+    "type": "choice",
+    "title": "加算代入演算子",
+    "description": "変数 x の値を 3 増やす正しい書き方はどれですか？",
+    "hint": "加算代入演算子を使います。",
+    "choices": [
+      "x =+ 3;",
+      "x += 3;",
+      "x ++ 3;",
+      "x +== 3;"
+    ],
+    "correctAnswer": 1,
+    "explanation": "x += 3; は x の値を 3 増やす書き方です。"
+  },
+  {
+    "id": "ch3-7",
+    "type": "predict-output",
+    "title": "剰余を予想する",
+    "description": "10 % 3 の結果はいくつですか？",
+    "hint": "10 を 3 で割った余りです。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "1",
+    "explanation": "10 ÷ 3 は 3 余り 1 なので、10 % 3 は 1 です。"
+  },
+  {
+    "id": "ch3-8",
+    "type": "predict-output",
+    "title": "文字列の加算を予想する",
+    "description": "let x = '10'; print(x + 1); の結果は何ですか？",
+    "hint": "文字列と数値の + は文字列連結になります。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "101",
+    "explanation": "'10' は文字列なので、1 と足すと数値の 11 ではなく文字列の '101' になります。"
+  },
+  {
+    "id": "ch3-9",
+    "type": "full-code",
+    "title": "中央の左右に円を描く",
+    "description": "大きな円の中央を基準に、左右に小さな円が描かれるように修正してください。",
+    "hint": "width / 2 と DIA / 4 を使って位置を考えましょう。",
+    "starterCode": "const DIA = 200;\ncreateCanvas(300, 300);\nbackground(220);\ncircle(width / 2, height / 2, DIA);\nfill(128, 0, 128);\ncircle(width / 2, height / 2, DIA / 2);\nfill(0, 128, 128);\ncircle(width / 2, height / 2, DIA / 4);",
+    "answerCode": "const DIA = 200;\ncreateCanvas(300, 300);\nbackground(220);\ncircle(width / 2, height / 2, DIA);\nfill(128, 0, 128);\ncircle(width / 2 - DIA / 4, height / 2, DIA / 2);\nfill(0, 128, 128);\ncircle(width / 2 + DIA / 4, height / 2, DIA / 4);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch3-10",
+    "type": "full-code",
+    "title": "parseInt を使う",
+    "description": "文字列 '10' を数値として 1 足した結果が 11 になるように修正してください。",
+    "hint": "文字列を数値に変換する関数を使います。",
+    "starterCode": "let x = '10';\nprint(x + 1);",
+    "answerCode": "let x = '10';\nprint(parseInt(x) + 1);",
+    "judgeMode": "code-exact"
+  }
+]

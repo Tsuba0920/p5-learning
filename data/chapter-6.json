@@ -1,0 +1,117 @@
+[
+  {
+    "id": "ch6-1",
+    "type": "fix-code",
+    "title": "if と for を組み合わせる",
+    "description": "x が 100 または 300 のときだけ橙色になり、それ以外は白色になるように修正してください。",
+    "hint": "OR 条件は || を使います。",
+    "starterCode": "for (let x = 100; x <= 400; x += 100) {\n  if (x == 100 && x == 300) {\n    fill(255, 128, 0);\n  } else {\n    fill(255);\n  }\n  circle(x, height / 2, 50);\n}",
+    "answerCode": "for (let x = 100; x <= 400; x += 100) {\n  if (x == 100 || x == 300) {\n    fill(255, 128, 0);\n  } else {\n    fill(255);\n  }\n  circle(x, height / 2, 50);\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch6-2",
+    "type": "fix-code",
+    "title": "余りを使って色を変える",
+    "description": "x を 200 で割った余りが 100 のときに橙色になるように修正してください。",
+    "hint": "余りを求める演算子は % です。",
+    "starterCode": "for (let x = 100; x <= 400; x += 100) {\n  if (x / 200 == 100) {\n    fill(255, 128, 0);\n  } else {\n    fill(255);\n  }\n  circle(x, height / 2, 50);\n}",
+    "answerCode": "for (let x = 100; x <= 400; x += 100) {\n  if (x % 200 == 100) {\n    fill(255, 128, 0);\n  } else {\n    fill(255);\n  }\n  circle(x, height / 2, 50);\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch6-3",
+    "type": "fix-code",
+    "title": "break で途中停止する",
+    "description": "x が 300 のときにループを抜けるように修正してください。",
+    "hint": "繰り返しを途中で抜ける命令を使います。",
+    "starterCode": "for (let x = 100; x <= 400; x += 100) {\n  if (x == 300) {\n    continue;\n  }\n  circle(x, height / 2, 50);\n}",
+    "answerCode": "for (let x = 100; x <= 400; x += 100) {\n  if (x == 300) {\n    break;\n  }\n  circle(x, height / 2, 50);\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch6-4",
+    "type": "choice",
+    "title": "OR 演算子",
+    "description": "条件A または 条件B を表す演算子はどれですか？",
+    "hint": "縦棒を2つ並べます。",
+    "choices": [
+      "&&",
+      "||",
+      "==",
+      "!="
+    ],
+    "correctAnswer": 1,
+    "explanation": "OR 条件は || で表します。"
+  },
+  {
+    "id": "ch6-5",
+    "type": "choice",
+    "title": "break の役割",
+    "description": "break 命令の説明として正しいものはどれですか？",
+    "hint": "ループを途中で抜けます。",
+    "choices": [
+      "現在のループを最初からやり直す",
+      "次の繰り返しへ進む",
+      "ループを途中で抜ける",
+      "変数を初期化する"
+    ],
+    "correctAnswer": 2,
+    "explanation": "break は繰り返しを途中で抜け出す命令です。"
+  },
+  {
+    "id": "ch6-6",
+    "type": "choice",
+    "title": "continue の役割",
+    "description": "continue 命令の説明として正しいものはどれですか？",
+    "hint": "今の周回の残りを飛ばします。",
+    "choices": [
+      "ループ全体を終了する",
+      "現在の繰り返しの残りをスキップして次へ進む",
+      "条件分岐を終了する",
+      "変数を削除する"
+    ],
+    "correctAnswer": 1,
+    "explanation": "continue は現在の周回の残りを飛ばして次の繰り返しに進みます。"
+  },
+  {
+    "id": "ch6-7",
+    "type": "predict-output",
+    "title": "break の結果を予想する",
+    "description": "for 文の中で x == 300 のとき break した場合、x = 100, 200, 300, 400 のうち何個の円が描かれますか？",
+    "hint": "300 のときは描かれる前にループを抜けます。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "2",
+    "explanation": "x = 100, 200 の2個だけ描かれ、300 で break して終了します。"
+  },
+  {
+    "id": "ch6-8",
+    "type": "predict-output",
+    "title": "continue の結果を予想する",
+    "description": "for 文の中で x == 300 のとき continue した場合、x = 100, 200, 300, 400 のうち何個の円が描かれますか？",
+    "hint": "300 の周回だけ円がスキップされます。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "3",
+    "explanation": "x = 300 のときだけ円が描かれず、100, 200, 400 の3個が描かれます。"
+  },
+  {
+    "id": "ch6-9",
+    "type": "full-code",
+    "title": "continue で円を1つ飛ばす",
+    "description": "x が 300 のときだけ円を描かず、それ以外では正方形と円が重ね描きされるように修正してください。",
+    "hint": "square のあと、circle の前で continue を使います。",
+    "starterCode": "for (let x = 100; x <= 400; x += 100) {\n  square(x - 25, height / 2 - 25, 50);\n  circle(x, height / 2, 50);\n}",
+    "answerCode": "for (let x = 100; x <= 400; x += 100) {\n  square(x - 25, height / 2 - 25, 50);\n  if (x == 300) {\n    continue;\n  }\n  circle(x, height / 2, 50);\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch6-10",
+    "type": "full-code",
+    "title": "二重ループ内で break する",
+    "description": "二重ループの内側で、x が 300 かつ y が 200 のとき break するように修正してください。",
+    "hint": "AND 条件は && を使います。",
+    "starterCode": "for (let y = 100; y <= 400; y += 100) {\n  for (let x = 100; x <= 400; x += 100) {\n    if (x == 300 || y == 200) {\n      break;\n    }\n    circle(x, y, 50);\n  }\n}",
+    "answerCode": "for (let y = 100; y <= 400; y += 100) {\n  for (let x = 100; x <= 400; x += 100) {\n    if (x == 300 && y == 200) {\n      break;\n    }\n    circle(x, y, 50);\n  }\n}",
+    "judgeMode": "code-exact"
+  }
+]

@@ -1,0 +1,117 @@
+[
+  {
+    "id": "ch5-1",
+    "type": "fix-code",
+    "title": "for文の条件を修正する",
+    "description": "円が10個並ぶように、for文の条件を修正してください。",
+    "hint": "0 から 9 までの10回繰り返しです。",
+    "starterCode": "for (let i = 0; i < 9; i += 1) {\n  circle(i * 100 + 50, 100, 80);\n}",
+    "answerCode": "for (let i = 0; i < 10; i += 1) {\n  circle(i * 100 + 50, 100, 80);\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch5-2",
+    "type": "fix-code",
+    "title": "カウンタ変数の更新を修正する",
+    "description": "x 座標が 100 ずつ増えるように修正してください。",
+    "hint": "x を 100 ずつ増やします。",
+    "starterCode": "let x = 50;\nfor (let i = 0; i < 5; i += 1) {\n  circle(x, 100, 80);\n  x += 10;\n}",
+    "answerCode": "let x = 50;\nfor (let i = 0; i < 5; i += 1) {\n  circle(x, 100, 80);\n  x += 100;\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch5-3",
+    "type": "fix-code",
+    "title": "右から左へ描く",
+    "description": "円が右端から左へ向かって並ぶように修正してください。",
+    "starterCode": "for (let x = width - 50; x >= 0; x += 100) {\n  circle(x, height / 2, 100);\n}",
+    "answerCode": "for (let x = width - 50; x >= 0; x -= 100) {\n  circle(x, height / 2, 100);\n}",
+    "judgeMode": "code-exact",
+    "disableUserPreview": true
+  },
+  {
+    "id": "ch5-4",
+    "type": "choice",
+    "title": "for文の役割",
+    "description": "for文の説明として正しいものはどれですか？",
+    "hint": "繰り返し処理に使います。",
+    "choices": [
+      "条件分岐だけを行う構文",
+      "繰り返し処理を行う構文",
+      "変数定義だけを行う構文",
+      "関数を定義する構文"
+    ],
+    "correctAnswer": 1,
+    "explanation": "for文は繰り返し処理を行うための構文です。"
+  },
+  {
+    "id": "ch5-5",
+    "type": "choice",
+    "title": "カウンタ変数",
+    "description": "for (let i = 0; i < 10; i += 1) の i は何のための変数ですか？",
+    "hint": "繰り返し回数を管理する変数です。",
+    "choices": [
+      "背景色を保存する変数",
+      "図形の色を表す変数",
+      "繰り返し回数を数える変数",
+      "関数名を入れる変数"
+    ],
+    "correctAnswer": 2,
+    "explanation": "i はカウンタ変数で、繰り返し回数や順番を管理します。"
+  },
+  {
+    "id": "ch5-6",
+    "type": "choice",
+    "title": "while文とfor文",
+    "description": "本講座で今後主に使う繰り返し構文はどれですか？",
+    "hint": "PDFの後半に書かれています。",
+    "choices": [
+      "if文",
+      "while文だけ",
+      "for文だけ",
+      "switch文"
+    ],
+    "correctAnswer": 2,
+    "explanation": "本講座では混乱を避けるため、今後は for 文を主に使います。"
+  },
+  {
+    "id": "ch5-7",
+    "type": "predict-output",
+    "title": "繰り返し回数を予想する",
+    "description": "for (let i = 0; i < 10; i += 1) は何回繰り返しますか？",
+    "hint": "i は 0 から 9 まで動きます。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "10",
+    "explanation": "i = 0,1,2,...,9 の10回繰り返されます。"
+  },
+  {
+    "id": "ch5-8",
+    "type": "predict-output",
+    "title": "座標の変化を予想する",
+    "description": "for (let x = 50; x <= 250; x += 100) のとき、x の値は何個使われますか？",
+    "hint": "50, 150, 250 を順に考えます。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "3",
+    "explanation": "x は 50, 150, 250 の3回使われます。"
+  },
+  {
+    "id": "ch5-9",
+    "type": "full-code",
+    "title": "二重ループで円を並べる",
+    "description": "x方向とy方向に円が並ぶように、二重ループに修正してください。",
+    "hint": "for文の中にさらにfor文を入れます。",
+    "starterCode": "const DIA = 100;\ncreateCanvas(500, 500);\nbackground(220);\nfor (let x = 50; x <= width; x += 100) {\n  circle(x, 50, DIA);\n}",
+    "answerCode": "const DIA = 100;\ncreateCanvas(500, 500);\nbackground(220);\nfor (let y = 50; y <= height; y += 100) {\n  for (let x = 50; x <= width; x += 100) {\n    circle(x, y, DIA);\n  }\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch5-10",
+    "type": "full-code",
+    "title": "直径を2倍ずつ増やす",
+    "description": "円の直径が 2 倍ずつ大きくなるように修正してください。",
+    "hint": "更新式で dia *= 2 を使います。",
+    "starterCode": "noFill();\nfor (let dia = 1; dia < height; dia += 2) {\n  circle(width / 2, height / 2, dia);\n}",
+    "answerCode": "noFill();\nfor (let dia = 1; dia < height; dia *= 2) {\n  circle(width / 2, height / 2, dia);\n}",
+    "judgeMode": "code-exact"
+  }
+]

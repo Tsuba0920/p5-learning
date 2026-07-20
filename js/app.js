@@ -1,8 +1,11 @@
+// js/app.js
+
 async function init() {
   setupP5Canvases();
 
   appState.chapters = await loadChapters();
   renderChapterList();
+  setupSidebarToggles();
 
   const progress = typeof loadProgress === "function"
     ? loadProgress()
@@ -193,7 +196,6 @@ function runAndJudge() {
       setResultState("wrong", "不正解です", result.message);
     }
 
-    renderProblemList();
     renderAnswerPreview(problem);
     answerButton.classList.remove("hidden");
     return;
@@ -210,11 +212,14 @@ function showAnswer() {
   const problem = getCurrentProblem();
   if (!problem) return;
 
+  appState.hasViewedAnswer = true;
+  runButton.disabled = true;
+
   if (problem.type === "choice") {
     showChoiceAnswerColors(problem);
     setResultState(
       "neutral",
-      `正解は ${problem.answerIndex + 1} 番目です`,
+      `正解は ${problem.correctAnswer + 1} 番目です`,
       problem.explanation || ""
     );
     return;
@@ -223,7 +228,7 @@ function showAnswer() {
   if (problem.type === "predict-output") {
     setResultState(
       "neutral",
-      `正解: ${problem.correctText}`,
+      `正解: ${problem.correctAnswer}`,
       problem.explanation || ""
     );
     return;
@@ -231,13 +236,21 @@ function showAnswer() {
 
   if (problem.type === "fix-code" || problem.type === "full-code") {
     codeEditorEl.value = problem.answerCode;
-    setResultState("neutral", "模範解答を表示しました", problem.explanation || "");
+    setResultState(
+      "neutral",
+      "模範解答を表示しました",
+      problem.explanation || ""
+    );
+    renderAnswerPreview(problem);
   }
 }
 
 function resetCode() {
   const problem = getCurrentProblem();
   if (!problem) return;
+
+  appState.hasViewedAnswer = false;
+  runButton.disabled = false;
 
   hintMessageEl.textContent = "ヒントはまだ表示されていません。";
   setResultState("neutral", "初期状態に戻しました。", "");

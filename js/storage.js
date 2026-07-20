@@ -61,7 +61,6 @@ function addHistoryEntry(entry) {
     timestamp: new Date().toISOString()
   });
 
-  // 履歴が増えすぎないように最新100件だけ残す
   if (progress.history.length > 100) {
     progress.history = progress.history.slice(0, 100);
   }

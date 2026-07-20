@@ -1,0 +1,120 @@
+[
+  {
+    "id": "ch8-1",
+    "type": "choice",
+    "title": "draw() の役割",
+    "description": "アニメーションで毎回くり返し実行される関数はどれですか？",
+    "choices": [
+      "setup()",
+      "draw()",
+      "mousePressed()",
+      "background()"
+    ],
+    "correctAnswer": 1,
+    "hint": "setup() は最初の1回、draw() は何度も実行されます。",
+    "explanation": "draw() は自動でくり返し実行されるので、アニメーションを作る中心になります。"
+  },
+  {
+    "id": "ch8-2",
+    "type": "choice",
+    "title": "background() が必要な理由",
+    "description": "draw() の中で background() を毎回書く主な理由として最も適切なものはどれですか？",
+    "choices": [
+      "図形を大きくするため",
+      "前のフレームの絵を消して描き直すため",
+      "draw() を止めるため",
+      "変数を初期化するため"
+    ],
+    "correctAnswer": 1,
+    "hint": "background() を書かないと、前に描いた絵が残ることがあります。",
+    "explanation": "background() を毎フレーム実行すると、前の絵を消して新しい位置に描き直せるため、なめらかなアニメーションになります。"
+  },
+  {
+    "id": "ch8-3",
+    "type": "predict-output",
+    "title": "変数 x の変化",
+    "description": "次のコードで、最初の draw() 実行後の x の値はどうなりますか？",
+    "starterCode": "let x = 0;\n\nfunction setup() {\n  createCanvas(200, 200);\n}\n\nfunction draw() {\n  x = x + 5;\n}",
+    "correctAnswer": "5",
+    "hint": "x は最初 0 で、draw() の中で 5 増えます。",
+    "explanation": "x は 0 から始まり、draw() が1回実行されると x = 0 + 5 なので 5 になります。"
+  },
+  {
+    "id": "ch8-4",
+    "type": "fix-code",
+    "title": "動く円に直そう",
+    "description": "下のコードは、円を右に動かしたいプログラムです。まちがいを直してください。",
+    "starterCode": "let x = 0;\n\nfunction setup() {\n  createCanvas(300, 200);\n}\n\nfunction draw() {\n  background(220);\n  ellipse(x, 100, 30, 30);\n  x + 2;\n}",
+    "answerCode": "let x = 0;\n\nfunction setup() {\n  createCanvas(300, 200);\n}\n\nfunction draw() {\n  background(220);\n  ellipse(x, 100, 30, 30);\n  x = x + 2;\n}",
+    "judgeMode": "code-exact",
+    "hint": "x を増やすだけではなく、増やした結果を x に入れ直す必要があります。",
+    "explanation": "`x + 2;` だけでは x の値は変わりません。`x = x + 2;` として代入する必要があります。"
+  },
+  {
+    "id": "ch8-5",
+    "type": "full-code",
+    "title": "右に動く四角",
+    "description": "draw() を使って、四角が右に少しずつ動くプログラムを完成させてください。",
+    "starterCode": "let x = 0;\n\nfunction setup() {\n  createCanvas(300, 200);\n}\n\nfunction draw() {\n  background(240);\n  rect(x, 80, 40, 40);\n  x = x + 3;\n}",
+    "answerCode": "let x = 0;\n\nfunction setup() {\n  createCanvas(300, 200);\n}\n\nfunction draw() {\n  background(240);\n  rect(x, 80, 40, 40);\n  x = x + 3;\n}",
+    "hint": "background()、rect()、x = x + 3; の流れを確認しましょう。",
+    "explanation": "draw() のたびに x を増やすことで、四角が右に動いて見えます。"
+  },
+  {
+    "id": "ch8-6",
+    "type": "choice",
+    "title": "速さを変える",
+    "description": "円を今より速く右へ動かしたいです。`x = x + 1;` をどう変えるのが適切ですか？",
+    "choices": [
+      "x = x - 1;",
+      "x = x + 10;",
+      "x = 1;",
+      "x + 1;"
+    ],
+    "correctAnswer": 1,
+    "hint": "1回の draw() で増える量が大きいほど速く動きます。",
+    "explanation": "`x = x + 10;` にすると、1フレームごとに大きく移動するので速く見えます。"
+  },
+  {
+    "id": "ch8-7",
+    "type": "fix-code",
+    "title": "残像が残らないようにする",
+    "description": "下のコードでは円を動かすと跡が残ります。残らないように直してください。",
+    "starterCode": "let x = 0;\n\nfunction setup() {\n  createCanvas(300, 200);\n}\n\nfunction draw() {\n  ellipse(x, 100, 30, 30);\n  x = x + 2;\n}",
+    "answerCode": "let x = 0;\n\nfunction setup() {\n  createCanvas(300, 200);\n}\n\nfunction draw() {\n  background(220);\n  ellipse(x, 100, 30, 30);\n  x = x + 2;\n}",
+    "judgeMode": "code-exact",
+    "hint": "毎回画面を塗りつぶしてから描くと、前の絵が消えます。",
+    "explanation": "background(220); を draw() の中に入れることで、前のフレームの絵を消して描き直せます。"
+  },
+  {
+    "id": "ch8-8",
+    "type": "predict-output",
+    "title": "何回目で x は 20？",
+    "description": "x は 0 から始まり、draw() のたびに `x = x + 4;` と増えます。x が 20 になるのは draw() が何回実行された後ですか？",
+    "starterCode": "let x = 0;\n\nfunction draw() {\n  x = x + 4;\n}",
+    "correctAnswer": "5",
+    "hint": "0 → 4 → 8 → 12 → 16 → 20 と考えてみましょう。",
+    "explanation": "1回ごとに 4 ずつ増えるので、20 ÷ 4 = 5 回です。"
+  },
+  {
+    "id": "ch8-9",
+    "type": "fix-code",
+    "title": "下に動くように直そう",
+    "description": "このコードは円を下に動かしたいプログラムです。まちがいを直してください。",
+    "starterCode": "let y = 0;\n\nfunction setup() {\n  createCanvas(200, 300);\n}\n\nfunction draw() {\n  background(255);\n  ellipse(100, x, 30, 30);\n  y = y + 2;\n}",
+    "answerCode": "let y = 0;\n\nfunction setup() {\n  createCanvas(200, 300);\n}\n\nfunction draw() {\n  background(255);\n  ellipse(100, y, 30, 30);\n  y = y + 2;\n}",
+    "judgeMode": "code-exact",
+    "hint": "使っている変数名をそろえましょう。",
+    "explanation": "位置を管理しているのは y なので、ellipse(100, y, 30, 30); と書く必要があります。"
+  },
+  {
+    "id": "ch8-10",
+    "type": "full-code",
+    "title": "左右に動く円",
+    "description": "x を増やして右へ動かし、画面の端まで行ったら左端に戻る円のプログラムです。完成形を確認しましょう。",
+    "starterCode": "let x = 0;\n\nfunction setup() {\n  createCanvas(300, 200);\n}\n\nfunction draw() {\n  background(230);\n  ellipse(x, 100, 30, 30);\n  x = x + 4;\n\n  if (x > width) {\n    x = 0;\n  }\n}",
+    "answerCode": "let x = 0;\n\nfunction setup() {\n  createCanvas(300, 200);\n}\n\nfunction draw() {\n  background(230);\n  ellipse(x, 100, 30, 30);\n  x = x + 4;\n\n  if (x > width) {\n    x = 0;\n  }\n}",
+    "hint": "width はキャンバスの横幅です。端を超えたら x を 0 に戻します。",
+    "explanation": "x を少しずつ増やし、width を超えたら 0 に戻すことで、円が左から右へ流れ続ける動きになります。"
+  }
+]

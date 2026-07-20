@@ -1,6 +1,15 @@
 [
-  { "id": "basic", "title": "基本" },
-  { "id": "conditional", "title": "条件分岐" },
-  { "id": "array", "title": "配列" },
-  { "id": "function-1", "title": "関数①" }
+  { "id": "chapter-1", "title": "01 p5.jsをはじめよう" },
+  { "id": "chapter-2", "title": "02 変数" },
+  { "id": "chapter-3", "title": "03 演算" },
+  { "id": "chapter-4", "title": "04 条件分岐" },
+  { "id": "chapter-5", "title": "05 繰り返し" },
+  { "id": "chapter-6", "title": "06 繰り返し＆条件分岐" },
+  { "id": "chapter-7", "title": "07 配列" },
+  { "id": "chapter-8", "title": "08 アニメーション" },
+  { "id": "chapter-9", "title": "09 マウス＆キー入力" },
+  { "id": "chapter-10", "title": "10 関数" },
+  { "id": "chapter-11", "title": "11 引数ありの関数" },
+  { "id": "chapter-12", "title": "12 戻り値ありの関数" },
+  { "id": "chapter-13", "title": "13 クラス" }
 ]

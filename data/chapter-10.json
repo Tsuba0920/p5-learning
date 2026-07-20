@@ -1,0 +1,129 @@
+[
+  {
+    "id": "ch10-1",
+    "type": "choice",
+    "title": "関数呼び出しとは",
+    "description": "次のうち、関数呼び出しとして正しいものはどれですか？",
+    "choices": [
+      "function drawFace() { }",
+      "drawFace();",
+      "let drawFace = ;",
+      "if (drawFace) { }"
+    ],
+    "correctAnswer": 1,
+    "hint": "実際に関数を使うときの書き方です。",
+    "explanation": "drawFace(); は関数呼び出しです。function drawFace() { } は関数定義です。"
+  },
+  {
+    "id": "ch10-2",
+    "type": "choice",
+    "title": "関数定義とは",
+    "description": "次のうち、関数定義として正しいものはどれですか？",
+    "choices": [
+      "drawFace();",
+      "function drawFace() { circle(100, 100, 50); }",
+      "drawFace = circle();",
+      "function = drawFace()"
+    ],
+    "correctAnswer": 1,
+    "hint": "function から始まる形を思い出しましょう。",
+    "explanation": "function drawFace() { ... } の形で、自作関数を定義できます。"
+  },
+  {
+    "id": "ch10-3",
+    "type": "choice",
+    "title": "関数定義だけではどうなる？",
+    "description": "関数を定義しただけで、どこからも呼び出さなかった場合はどうなりますか？",
+    "choices": [
+      "自動で1回だけ実行される",
+      "draw() のたびに実行される",
+      "何も実行されない",
+      "エラーになる"
+    ],
+    "correctAnswer": 2,
+    "hint": "レシピを書いただけでは料理はできません。",
+    "explanation": "関数は呼び出されてはじめて中身が実行されます。定義しただけでは何も起きません。"
+  },
+  {
+    "id": "ch10-4",
+    "type": "predict-output",
+    "title": "何回呼ばれる？",
+    "description": "次のコードで myShape() の中の circle() は全部で何回実行されますか？",
+    "starterCode": "function setup() {\n  createCanvas(200, 200);\n  myShape();\n  myShape();\n}\n\nfunction myShape() {\n  circle(100, 100, 50);\n}",
+    "correctAnswer": "2",
+    "hint": "myShape(); が何回書かれているか見ましょう。",
+    "explanation": "myShape(); が2回呼び出されているので、関数の中の circle() も2回実行されます。"
+  },
+  {
+    "id": "ch10-5",
+    "type": "fix-code",
+    "title": "関数を呼び出せるように直す",
+    "description": "下のコードは drawFace を呼び出したいプログラムです。まちがいを直してください。",
+    "starterCode": "function setup() {\n  createCanvas(300, 300);\n}\n\nfunction draw() {\n  background(220);\n  drawFace;\n}\n\nfunction drawFace() {\n  circle(150, 150, 100);\n}",
+    "answerCode": "function setup() {\n  createCanvas(300, 300);\n}\n\nfunction draw() {\n  background(220);\n  drawFace();\n}\n\nfunction drawFace() {\n  circle(150, 150, 100);\n}",
+    "judgeMode": "code-exact",
+    "hint": "関数呼び出しには () が必要です。",
+    "explanation": "drawFace; だけでは呼び出しになりません。drawFace(); と書いて実行します。"
+  },
+  {
+    "id": "ch10-6",
+    "type": "choice",
+    "title": "random() の特徴",
+    "description": "教材の説明として正しいものはどれですか？",
+    "choices": [
+      "random() は戻り値がない",
+      "random(0, width) は値を返すので変数に代入できる",
+      "random() は必ず整数を返す",
+      "random() は関数ではない"
+    ],
+    "correctAnswer": 1,
+    "hint": "乱数を変数 dia に入れていました。",
+    "explanation": "random(0, width) は乱数という戻り値を返すので、dia = random(0, width); のように使えます。"
+  },
+  {
+    "id": "ch10-7",
+    "type": "predict-output",
+    "title": "戻り値がある関数",
+    "description": "次のコードで、random(0, width) に関する説明として最も適切なものを答えてください。",
+    "starterCode": "let dia;\n\ndia = random(0, width);",
+    "correctAnswer": "乱数が返されて dia に代入される",
+    "hint": "関数が実行されたあと、その場所が値に置き換わるイメージです。",
+    "explanation": "random(0, width) は 0 以上 width 未満の乱数を返し、その値が dia に代入されます。"
+  },
+  {
+    "id": "ch10-8",
+    "type": "fix-code",
+    "title": "関数定義の形に直す",
+    "description": "下のコードは自作関数を定義したいプログラムです。正しい形に直してください。",
+    "starterCode": "drawFace() {\n  circle(150, 150, 100);\n}",
+    "answerCode": "function drawFace() {\n  circle(150, 150, 100);\n}",
+    "judgeMode": "code-exact",
+    "hint": "関数定義は function から始まります。",
+    "explanation": "自作関数を定義するときは function 関数名() { ... } の形で書きます。"
+  },
+  {
+    "id": "ch10-9",
+    "type": "full-code",
+    "title": "顔を描く関数",
+    "description": "顔の一部をまとめた drawFace() を使う完成形のコードです。関数にまとめる形を確認しましょう。",
+    "starterCode": "function setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  drawFace();\n}\n\nfunction drawFace() {\n  circle(width / 2, height / 2, 300);\n  circle(width / 2 - 70, height / 2 - 20, 50);\n  circle(width / 2 + 70, height / 2 - 20, 50);\n}",
+    "answerCode": "function setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  drawFace();\n}\n\nfunction drawFace() {\n  circle(width / 2, height / 2, 300);\n  circle(width / 2 - 70, height / 2 - 20, 50);\n  circle(width / 2 + 70, height / 2 - 20, 50);\n}",
+    "hint": "同じ処理をまとめて、draw() では関数名で呼び出します。",
+    "explanation": "drawFace() に顔の共通部分をまとめておくと、同じ処理を何度も使いやすくなります。"
+  },
+  {
+    "id": "ch10-10",
+    "type": "choice",
+    "title": "関数にまとめる利点",
+    "description": "同じコードを関数にまとめる利点として最も適切なものはどれですか？",
+    "choices": [
+      "プログラムが必ず速くなる",
+      "同じ修正を何か所も直さなくてよくなる",
+      "if 文が使えなくなる",
+      "変数が不要になる"
+    ],
+    "correctAnswer": 1,
+    "hint": "同じ顔のコードを2か所に書く例を思い出しましょう。",
+    "explanation": "共通部分を関数にまとめると、修正が1か所で済み、書き忘れや直し忘れを防ぎやすくなります。"
+  }
+]

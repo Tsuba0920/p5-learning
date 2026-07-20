@@ -1,0 +1,129 @@
+[
+  {
+    "id": "ch12-1",
+    "type": "choice",
+    "title": "戻り値とは",
+    "description": "関数が実行されたあと、その関数の書かれていた場所と置き換わる値を何といいますか？",
+    "choices": [
+      "引数",
+      "変数",
+      "戻り値",
+      "条件式"
+    ],
+    "correctAnswer": 2,
+    "hint": "return value のことです。",
+    "explanation": "関数が実行されたあとにその場所と置き換わる値を戻り値といいます。"
+  },
+  {
+    "id": "ch12-2",
+    "type": "choice",
+    "title": "戻り値ありの組み込み関数",
+    "description": "教材で戻り値ありの組み込み関数の例として紹介されていたものはどれですか？",
+    "choices": [
+      "background()",
+      "circle()",
+      "random()",
+      "noLoop()"
+    ],
+    "correctAnswer": 2,
+    "hint": "乱数を作る関数です。",
+    "explanation": "random() は戻り値ありの組み込み関数の代表例で、乱数を返します。"
+  },
+  {
+    "id": "ch12-3",
+    "type": "predict-output",
+    "title": "map() の結果",
+    "description": "次のコードで print される値は何ですか？",
+    "starterCode": "function setup() {\n  noLoop();\n}\n\nfunction draw() {\n  let output = map(3, 1, 10, 10, 100);\n  print(output);\n}",
+    "correctAnswer": "30",
+    "hint": "教材の例そのままです。3 を 1〜10 から 10〜100 に対応させます。",
+    "explanation": "map(3, 1, 10, 10, 100) は、入力値 3 を旧範囲 1〜10 から新範囲 10〜100 に変換し、30 を返します。"
+  },
+  {
+    "id": "ch12-4",
+    "type": "fix-code",
+    "title": "return を書き足す",
+    "description": "下のコードは BMI を計算して返したい関数です。まちがいを直してください。",
+    "starterCode": "function calcBMI(h, w) {\n  w / (h * h);\n}",
+    "answerCode": "function calcBMI(h, w) {\n  return w / (h * h);\n}",
+    "judgeMode": "code-exact",
+    "hint": "戻り値ありの関数では return が必要です。",
+    "explanation": "戻り値を返すには return を使います。式だけ書いても呼び出し元に値は返りません。"
+  },
+  {
+    "id": "ch12-5",
+    "type": "choice",
+    "title": "戻り値の受け取り方",
+    "description": "戻り値ありの関数の基本的な呼び出し方として最も適切なものはどれですか？",
+    "choices": [
+      "let x = 関数();",
+      "function x = 関数();",
+      "return x = 関数();",
+      "if = 関数();"
+    ],
+    "correctAnswer": 0,
+    "hint": "教材では『戻り値を変数で受け取る』と説明されていました。",
+    "explanation": "戻り値ありの関数は let x = 関数(); のように、変数で受け取るのが基本です。"
+  },
+  {
+    "id": "ch12-6",
+    "type": "predict-output",
+    "title": "BMI の計算結果",
+    "description": "次のコードで print される値として最も近いものはどれですか？",
+    "starterCode": "function setup() {\n  noLoop();\n}\n\nfunction draw() {\n  print(calcBMI(1.65, 55));\n}\n\nfunction calcBMI(h, w) {\n  return w / (h * h);\n}",
+    "correctAnswer": "20.2",
+    "hint": "55 ÷ (1.65 × 1.65) を計算します。",
+    "explanation": "55 ÷ (1.65 × 1.65) は約 20.202... なので、最も近い値は 20.2 です。"
+  },
+  {
+    "id": "ch12-7",
+    "type": "choice",
+    "title": "return の後",
+    "description": "return が実行されたあとの関数内の処理はどうなりますか？",
+    "choices": [
+      "そのまま最後まで実行される",
+      "1回だけ繰り返される",
+      "そこで終了し、それ以降は実行されない",
+      "自動で draw() に戻らない"
+    ],
+    "correctAnswer": 2,
+    "hint": "教材では return の後の print は到達しないと説明されていました。",
+    "explanation": "return が実行されると、その時点で関数の処理は終わります。後ろのコードは実行されません。"
+  },
+  {
+    "id": "ch12-8",
+    "type": "fix-code",
+    "title": "print まで到達しない理由",
+    "description": "下のコードは return のあとに処理を書いています。return の性質がわかるように正しい形へ直してください。",
+    "starterCode": "function calcBMI(h, w) {\n  let bmi = w / (h * h);\n  return bmi;\n  print(bmi);\n}",
+    "answerCode": "function calcBMI(h, w) {\n  let bmi = w / (h * h);\n  print(bmi);\n  return bmi;\n}",
+    "judgeMode": "code-exact",
+    "hint": "return の後の処理は実行されません。",
+    "explanation": "return の後ろに書いた処理は実行されないので、必要な処理は return の前に書く必要があります。"
+  },
+  {
+    "id": "ch12-9",
+    "type": "choice",
+    "title": "return だけを書く意味",
+    "description": "戻り値なしの関数の中で `return;` だけを書く主な目的は何ですか？",
+    "choices": [
+      "必ず数値を返すため",
+      "その場で関数の処理を打ち切るため",
+      "変数をグローバルにするため",
+      "for 文を作るため"
+    ],
+    "correctAnswer": 1,
+    "hint": "break に近い使い方です。",
+    "explanation": "return; だけを書くと、その場で関数の処理を終了できます。戻り値なしの関数でも使えます。"
+  },
+  {
+    "id": "ch12-10",
+    "type": "full-code",
+    "title": "戻り値ありの関数を使う",
+    "description": "calcBMI() の戻り値を print で表示する完成形のコードです。戻り値の流れを確認しましょう。",
+    "starterCode": "function setup() {\n  noLoop();\n}\n\nfunction draw() {\n  print(calcBMI(1.65, 55));\n}\n\nfunction calcBMI(h, w) {\n  return w / (h * h);\n}",
+    "answerCode": "function setup() {\n  noLoop();\n}\n\nfunction draw() {\n  print(calcBMI(1.65, 55));\n}\n\nfunction calcBMI(h, w) {\n  return w / (h * h);\n}",
+    "hint": "関数の戻り値を、そのまま print の引数にしています。",
+    "explanation": "calcBMI() が返した値が print() の引数として使われています。戻り値ありの関数はこのように他の式の中でも使えます。"
+  }
+]

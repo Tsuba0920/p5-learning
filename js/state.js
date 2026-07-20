@@ -7,5 +7,6 @@ const appState = {
   answerP5: null,
   previewGraphics: null,
   answerGraphics: null,
-  selectedChoiceIndex: null
+  selectedChoiceIndex: null,
+  hasViewedAnswer: false
 };

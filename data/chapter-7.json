@@ -1,0 +1,117 @@
+[
+  {
+    "id": "ch7-1",
+    "type": "fix-code",
+    "title": "配列のインデックスを修正する",
+    "description": "配列 dia の先頭の値 30 が使われるように修正してください。",
+    "hint": "配列のインデックスは 0 から始まります。",
+    "starterCode": "let dia = [30, 15, 70, 50, 25, 90];\ncircle(50, 100, dia[1]);",
+    "answerCode": "let dia = [30, 15, 70, 50, 25, 90];\ncircle(50, 100, dia[0]);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch7-2",
+    "type": "fix-code",
+    "title": "for文で配列を順に使う",
+    "description": "配列 dia の要素を順番に使って円を描くように修正してください。",
+    "hint": "i 番目の要素は dia[i] です。",
+    "starterCode": "let dia = [30, 15, 70, 50, 25, 90];\nfor (let i = 0; i < dia.length; i += 1) {\n  circle(50 + i * 100, 100, dia);\n}",
+    "answerCode": "let dia = [30, 15, 70, 50, 25, 90];\nfor (let i = 0; i < dia.length; i += 1) {\n  circle(50 + i * 100, 100, dia[i]);\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch7-3",
+    "type": "fix-code",
+    "title": "length を使う",
+    "description": "配列 data のすべての要素を出力するように修正してください。",
+    "hint": "要素数は data.length で表せます。",
+    "starterCode": "let data = [10, 20, 30];\nfor (let i = 0; i < 2; i += 1) {\n  print(data[i]);\n}",
+    "answerCode": "let data = [10, 20, 30];\nfor (let i = 0; i < data.length; i += 1) {\n  print(data[i]);\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch7-4",
+    "type": "choice",
+    "title": "配列の定義",
+    "description": "配列を定義する正しい書き方はどれですか？",
+    "hint": "[ ] を使います。",
+    "choices": [
+      "let ary = (10, 20, 30);",
+      "let ary = [10, 20, 30];",
+      "let ary = {10, 20, 30};",
+      "let ary = <10, 20, 30>;"
+    ],
+    "correctAnswer": 1,
+    "explanation": "JavaScript では配列は [ ] を使って定義します。"
+  },
+  {
+    "id": "ch7-5",
+    "type": "choice",
+    "title": "インデックスの始まり",
+    "description": "配列のインデックスは何番目から始まりますか？",
+    "hint": "プログラミングでは 0 から数えるのが一般的です。",
+    "choices": [
+      "1番目",
+      "0番目",
+      "-1番目",
+      "2番目"
+    ],
+    "correctAnswer": 1,
+    "explanation": "配列のインデックスは 0 番目から始まります。"
+  },
+  {
+    "id": "ch7-6",
+    "type": "choice",
+    "title": "push メソッド",
+    "description": "配列の末尾に要素を追加するものはどれですか？",
+    "hint": "配列名.○○(値) の形です。",
+    "choices": [
+      "ary.pop(値)",
+      "ary.push(値)",
+      "ary.length(値)",
+      "ary.index(値)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "push() は配列の末尾に要素を追加するメソッドです。"
+  },
+  {
+    "id": "ch7-7",
+    "type": "predict-output",
+    "title": "配列の要素を予想する",
+    "description": "let data = [10, 20, 30]; のとき、data[2] はいくつですか？",
+    "hint": "0番目が10、1番目が20です。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "30",
+    "explanation": "data[2] は3番目の要素で、30です。"
+  },
+  {
+    "id": "ch7-8",
+    "type": "predict-output",
+    "title": "配列の長さを予想する",
+    "description": "let ary = []; ary.push('a'); ary.push('b'); のあと、ary.length はいくつですか？",
+    "hint": "push するたびに要素が1つ増えます。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "2",
+    "explanation": "要素が2つ追加されているので length は 2 です。"
+  },
+  {
+    "id": "ch7-9",
+    "type": "full-code",
+    "title": "空の配列に値を入れる",
+    "description": "空の配列 ary に 10, 20, 30 を push して、順に出力するように修正してください。",
+    "hint": "ary.push(値) を使います。",
+    "starterCode": "let ary = [];\nprint(ary[0]);\nprint(ary[1]);\nprint(ary[2]);",
+    "answerCode": "let ary = [];\nary.push(10);\nary.push(20);\nary.push(30);\nprint(ary[0]);\nprint(ary[1]);\nprint(ary[2]);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch7-10",
+    "type": "full-code",
+    "title": "random と floor を使う",
+    "description": "0 以上 10 以下の整数をランダムに作るように修正してください。",
+    "hint": "random と floor を組み合わせます。",
+    "starterCode": "let x = random(0, 10);\nprint(x);",
+    "answerCode": "let x = floor(random(0, 11));\nprint(x);",
+    "judgeMode": "code-exact"
+  }
+]

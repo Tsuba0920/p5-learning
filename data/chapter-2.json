@@ -1,0 +1,116 @@
+[
+  {
+    "id": "ch2-1",
+    "type": "fix-code",
+    "title": "変数を定義する",
+    "description": "直径60の円を3つ描くために、変数 dia を正しく定義してください。",
+    "hint": "let を使って変数に 60 を入れます。",
+    "starterCode": "dia = 60;\ncircle(100, 100, dia);\ncircle(200, 100, dia);\ncircle(300, 100, dia);",
+    "answerCode": "let dia = 60;\ncircle(100, 100, dia);\ncircle(200, 100, dia);\ncircle(300, 100, dia);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch2-2",
+    "type": "fix-code",
+    "title": "変数名のつづりを直す",
+    "description": "変数 dia を使って円が描かれるように修正してください。",
+    "hint": "定義した変数名と使うときの名前が一致しているか確認しましょう。",
+    "starterCode": "let dia = 60;\ncircle(100, 100, dai);\ncircle(200, 100, dai);\ncircle(300, 100, dai);",
+    "answerCode": "let dia = 60;\ncircle(100, 100, dia);\ncircle(200, 100, dia);\ncircle(300, 100, dia);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch2-3",
+    "type": "fix-code",
+    "title": "y を変数にする",
+    "description": "3つの円の y 座標がすべて 100 になるように、変数 y を正しく使って修正してください。",
+    "hint": "let y = 100; を使ってみましょう。",
+    "starterCode": "let dia = 60;\nlet y = 100;\ncircle(100, x, dia);\ncircle(200, x, dia);\ncircle(300, x, dia);",
+    "answerCode": "let dia = 60;\nlet y = 100;\ncircle(100, y, dia);\ncircle(200, y, dia);\ncircle(300, y, dia);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch2-4",
+    "type": "choice",
+    "title": "変数定義の書き方",
+    "description": "変数 dia に 60 を入れる正しい書き方はどれですか？",
+    "hint": "let を先頭に書きます。",
+    "choices": [
+      "dia let = 60;",
+      "let dia = 60;",
+      "const = dia 60;",
+      "dia = let 60;"
+    ],
+    "correctAnswer": 1,
+    "explanation": "JavaScript では let 変数名 = 値; の形で変数を定義します。"
+  },
+  {
+    "id": "ch2-5",
+    "type": "choice",
+    "title": "代入の書き方",
+    "description": "すでに定義されている変数 y の値を 120 に変更する正しい書き方はどれですか？",
+    "hint": "代入では let を付けません。",
+    "choices": [
+      "let y = 120;",
+      "y = 120;",
+      "const y = 120;",
+      "y == 120;"
+    ],
+    "correctAnswer": 1,
+    "explanation": "すでに定義済みの変数に値を入れ直すときは、let を付けずに y = 120; と書きます。"
+  },
+  {
+    "id": "ch2-6",
+    "type": "choice",
+    "title": "定数の定義",
+    "description": "定数 DIA に 60 を入れる正しい書き方はどれですか？",
+    "hint": "定数は const を使います。",
+    "choices": [
+      "let DIA = 60;",
+      "const DIA = 60;",
+      "DIA = 60;",
+      "constant DIA = 60;"
+    ],
+    "correctAnswer": 1,
+    "explanation": "JavaScript では const 変数名 = 値; の形で定数を定義します。"
+  },
+  {
+    "id": "ch2-7",
+    "type": "predict-output",
+    "title": "変数の値を予想する",
+    "description": "let dia = 40; のとき、circle(100, 100, dia); の直径はいくつですか？",
+    "hint": "dia に入っている値をそのまま使います。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "40",
+    "explanation": "dia に 40 が入っているので、円の直径は 40 です。"
+  },
+  {
+    "id": "ch2-8",
+    "type": "predict-output",
+    "title": "代入後の値を予想する",
+    "description": "let y = 80; のあとに y = 120; と書いたとき、circle(100, y, 20); の y 座標はいくつですか？",
+    "hint": "後から代入した値が有効になります。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "120",
+    "explanation": "y は後から 120 に代入し直されているので、y 座標は 120 です。"
+  },
+  {
+    "id": "ch2-9",
+    "type": "full-code",
+    "title": "width と height を使う",
+    "description": "キャンバスの中央に円が描かれるように、width と height を使って修正してください。",
+    "hint": "中央は width / 2 と height / 2 で表せます。",
+    "starterCode": "createCanvas(400, 400);\nbackground(220);\ncircle(width, height, 80);",
+    "answerCode": "createCanvas(400, 400);\nbackground(220);\ncircle(width / 2, height / 2, 80);"
+  },
+  {
+    "id": "ch2-10",
+    "type": "full-code",
+    "title": "変数をまとめて使う",
+    "description": "直径 dia、y 座標 y を使って、横に3つの円が並ぶように修正してください。",
+    "hint": "dia と y を先に定義してから circle で使います。",
+    "starterCode": "circle(100, y, dia);\ncircle(200, y, dia);\ncircle(300, y, dia);",
+    "answerCode": "let dia = 60;\nlet y = 100;\ncircle(100, y, dia);\ncircle(200, y, dia);\ncircle(300, y, dia);",
+    "judgeMode": "code-exact"
+  }
+]

@@ -1,0 +1,117 @@
+[
+  {
+    "id": "ch4-1",
+    "type": "fix-code",
+    "title": "if の条件式を修正する",
+    "description": "dia が 100 以上のときだけ noFill() が実行されるように修正してください。",
+    "hint": "以上は >= を使います。",
+    "starterCode": "let dia = 120;\nif (dia > 100) {\n  noFill();\n}\ncircle(160, 160, dia);",
+    "answerCode": "let dia = 120;\nif (dia >= 100) {\n  noFill();\n}\ncircle(160, 160, dia);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch4-2",
+    "type": "fix-code",
+    "title": "== を使って比較する",
+    "description": "x が 5 と等しいときにだけ fill(255, 0, 0); が実行されるように修正してください。",
+    "hint": "等しいかどうかの比較には == を使います。",
+    "starterCode": "let x = 5;\nif (x = 5) {\n  fill(255, 0, 0);\n}",
+    "answerCode": "let x = 5;\nif (x == 5) {\n  fill(255, 0, 0);\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch4-3",
+    "type": "fix-code",
+    "title": "else を追加する",
+    "description": "dia が 100 以上なら青、そうでなければ黄色で塗りつぶされるように修正してください。",
+    "hint": "条件に当てはまらない場合は else を使います。",
+    "starterCode": "let dia = 80;\nif (dia >= 100) {\n  fill(0, 0, 255);\n}\ncircle(160, 160, dia);",
+    "answerCode": "let dia = 80;\nif (dia >= 100) {\n  fill(0, 0, 255);\n} else {\n  fill(255, 255, 0);\n}\ncircle(160, 160, dia);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch4-4",
+    "type": "choice",
+    "title": "比較演算子の意味",
+    "description": "x >= 10 の意味として正しいものはどれですか？",
+    "hint": ">= は「大なりイコール」です。",
+    "choices": [
+      "x が 10 より大きい",
+      "x が 10 以下",
+      "x が 10 以上",
+      "x が 10 と等しくない"
+    ],
+    "correctAnswer": 2,
+    "explanation": ">= は「以上」を意味します。"
+  },
+  {
+    "id": "ch4-5",
+    "type": "choice",
+    "title": "else if の役割",
+    "description": "if と else の間に別の条件を追加したいときに使うものはどれですか？",
+    "hint": "「そうでなければ、もし〜」です。",
+    "choices": [
+      "if else",
+      "else if",
+      "if then",
+      "elseifthen"
+    ],
+    "correctAnswer": 1,
+    "explanation": "else if を使うと、複数の条件を順に分岐できます。"
+  },
+  {
+    "id": "ch4-6",
+    "type": "choice",
+    "title": "AND 条件",
+    "description": "「dia が 100 以上 200 未満」を表す正しい条件式はどれですか？",
+    "hint": "2つの条件を && でつなぎます。",
+    "choices": [
+      "dia >= 100 && dia < 200",
+      "dia >= 100 || dia < 200",
+      "dia > 100 == dia < 200",
+      "dia >= 100 &&& dia < 200"
+    ],
+    "correctAnswer": 0,
+    "explanation": "100 以上かつ 200 未満は dia >= 100 && dia < 200 です。"
+  },
+  {
+    "id": "ch4-7",
+    "type": "predict-output",
+    "title": "if の実行結果を予想する",
+    "description": "let dia = 80; if (dia >= 100) { fill(0, 0, 255); } else { fill(255, 255, 0); } のとき、円は何色になりますか？",
+    "hint": "80 は 100 以上ではありません。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "黄色",
+    "explanation": "dia = 80 なので else 側が実行され、黄色になります。"
+  },
+  {
+    "id": "ch4-8",
+    "type": "predict-output",
+    "title": "OR 条件を予想する",
+    "description": "if (dia < 50 || dia > 100) のとき、dia = 120 なら条件は満たされますか？",
+    "hint": "OR はどちらか一方が真なら成立です。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "はい",
+    "explanation": "dia = 120 は dia > 100 を満たすので、条件全体も真になります。"
+  },
+  {
+    "id": "ch4-9",
+    "type": "full-code",
+    "title": "else if で3色に分ける",
+    "description": "dia が 100 未満なら青、200 以上なら赤、それ以外なら黄色になるように修正してください。",
+    "hint": "if、else if、else の3つを使います。",
+    "starterCode": "let dia = 150;\nif (dia < 100) {\n  fill(0, 0, 255);\n} else {\n  fill(255, 255, 0);\n}\ncircle(160, 160, dia);",
+    "answerCode": "let dia = 150;\nif (dia < 100) {\n  fill(0, 0, 255);\n} else if (dia >= 200) {\n  fill(255, 0, 0);\n} else {\n  fill(255, 255, 0);\n}\ncircle(160, 160, dia);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch4-10",
+    "type": "full-code",
+    "title": "if の入れ子を使う",
+    "description": "dia が 50 より大きい場合にだけ、y が 40 以下なら黄色、そうでなければ緑になるように修正してください。",
+    "hint": "if の中に if を入れます。",
+    "starterCode": "let dia = 80;\nlet y = 30;\nif (dia > 50) {\n  fill(255, 255, 0);\n}\ncircle(160, y, dia);",
+    "answerCode": "let dia = 80;\nlet y = 30;\nif (dia > 50) {\n  if (y <= 40) {\n    fill(255, 255, 0);\n  } else {\n    fill(0, 255, 0);\n  }\n}\ncircle(160, y, dia);",
+    "judgeMode": "code-exact"
+  }
+]

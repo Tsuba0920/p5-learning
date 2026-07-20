@@ -17,29 +17,49 @@ function calculateImageDifference(g1, g2) {
 }
 
 function judgeChoice(problem) {
-  return appState.selectedChoiceIndex === problem.answerIndex;
+  return appState.selectedChoiceIndex === problem.correctAnswer;
 }
 
 function judgePredictOutput(problem, userInput) {
-  return userInput.trim() === String(problem.correctText).trim();
+  return userInput.trim() === String(problem.correctAnswer).trim();
+}
+
+function normalizeCode(code) {
+  return code
+    .replace(/\r\n/g, "\n")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function judgeCode(problem, userCode) {
   clearGraphics(appState.previewGraphics);
   clearGraphics(appState.answerGraphics);
 
-  // 先に正解の見本を描画しておく
   try {
-    executeBodyOnGraphics(problem.answerCode, appState.answerGraphics);
+    executeBodyOnGraphics(problem.answerCode, appState.answerGraphics, problem.type);
   } catch (e) {
     return { ok: false, message: `内部エラー: ${e.message}` };
   }
 
-  // 次にユーザーコードを実行する
-  try {
-    executeBodyOnGraphics(userCode, appState.previewGraphics);
-  } catch (e) {
-    return { ok: false, message: `エラー: ${e.message}` };
+  if (!problem.disableUserPreview) {
+    try {
+      executeBodyOnGraphics(userCode, appState.previewGraphics, problem.type);
+    } catch (e) {
+      if (problem.judgeMode !== "code-exact") {
+        return { ok: false, message: `エラー: ${e.message}` };
+      }
+    }
+  }
+
+  if (problem.judgeMode === "code-exact") {
+    const userNormalized = normalizeCode(sanitizeCode(userCode));
+    const answerNormalized = normalizeCode(sanitizeCode(problem.answerCode));
+
+    if (userNormalized === answerNormalized) {
+      return { ok: true, message: "正解！ コードが正しく修正されています。" };
+    } else {
+      return { ok: false, message: "不正解です。コードの内容を見直してください。" };
+    }
   }
 
   const diff = calculateImageDifference(

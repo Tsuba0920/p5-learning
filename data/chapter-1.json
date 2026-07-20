@@ -1,0 +1,115 @@
+[
+  {
+    "id": "ch1-1",
+    "type": "fix-code",
+    "title": "キャンバスサイズを修正する",
+    "description": "横400、縦400のキャンバスが作られるように修正してください。",
+    "hint": "createCanvas の引数は横幅と高さの2つです。",
+    "starterCode": "createCanvas(400);",
+    "answerCode": "createCanvas(400, 400);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch1-2",
+    "type": "fix-code",
+    "title": "draw のつづりを修正する",
+    "description": "draw が正しく繰り返し実行されるように修正してください。",
+    "hint": "draw のつづりを見直しましょう。",
+    "starterCode": "function drow() {\n  background(220);\n  circle(200, 200, 80);\n}",
+    "answerCode": "function draw() {\n  background(220);\n  circle(200, 200, 80);\n}",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch1-3",
+    "type": "fix-code",
+    "title": "背景をRGBで設定する",
+    "description": "背景が緑色になるように修正してください。",
+    "hint": "background の RGB の並びは (赤, 緑, 青) です。",
+    "starterCode": "createCanvas(320, 320);\nbackground(255, 0, 0);",
+    "answerCode": "createCanvas(320, 320);\nbackground(0, 255, 0);"
+  },
+  {
+    "id": "ch1-4",
+    "type": "choice",
+    "title": "setup の役割",
+    "description": "setup() の説明として正しいものはどれですか？",
+    "hint": "最初に1回だけ実行される場所です。",
+    "choices": [
+      "毎秒60回ほど繰り返し実行される",
+      "最初に1回だけ実行される",
+      "マウスを押したときだけ実行される",
+      "エラーが出たときだけ実行される"
+    ],
+    "correctAnswer": 1,
+    "explanation": "setup() は最初に1回だけ実行されます。"
+  },
+  {
+    "id": "ch1-5",
+    "type": "choice",
+    "title": "draw の役割",
+    "description": "draw() の説明として正しいものはどれですか？",
+    "hint": "draw は描画に関する処理を繰り返します。",
+    "choices": [
+      "最初に1回だけ実行される",
+      "何も実行しない",
+      "繰り返し実行される",
+      "コードを保存するための関数である"
+    ],
+    "correctAnswer": 2,
+    "explanation": "draw() は繰り返し実行されます。"
+  },
+  {
+    "id": "ch1-6",
+    "type": "choice",
+    "title": "左上の座標",
+    "description": "p5.js のキャンバスで左上の座標はどれですか？",
+    "hint": "原点の位置を思い出しましょう。",
+    "choices": [
+      "(0, 0)",
+      "(160, 160)",
+      "(400, 400)",
+      "(1, 1)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "p5.js のキャンバスでは左上が原点 (0, 0) です。"
+  },
+  {
+    "id": "ch1-7",
+    "type": "predict-output",
+    "title": "背景の明るさを予想する",
+    "description": "background(0); のとき、背景は何色になりますか？",
+    "hint": "グレースケールでは 0 が最も暗い色です。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "黒",
+    "explanation": "background(0) は真っ黒です。"
+  },
+  {
+    "id": "ch1-8",
+    "type": "predict-output",
+    "title": "円の位置を予想する",
+    "description": "circle(200, 300, 80); のとき、円は画面のどのあたりに描かれますか？",
+    "hint": "y の値が大きいほど下に行きます。",
+    "prompt": "答えを入力してください",
+    "correctAnswer": "下",
+    "explanation": "y=300 なので、円は画面の下の方に描かれます。"
+  },
+  {
+    "id": "ch1-9",
+    "type": "fix-code",
+    "title": "塗りつぶしなしの円を描く",
+    "description": "背景の上に、塗りつぶしなし・黒い枠線の円が描かれるように修正してください。",
+    "starterCode": "createCanvas(320, 320);\nbackground(240);\ncircle(160, 160, 100);",
+    "answerCode": "createCanvas(320, 320);\nbackground(240);\nnoFill();\ncircle(160, 160, 100);",
+    "judgeMode": "code-exact"
+  },
+  {
+    "id": "ch1-10",
+    "type": "full-code",
+    "title": "draw の繰り返しを止める",
+    "description": "draw() の繰り返しを止めるように修正してください。",
+    "hint": "setup の中で noLoop() を使います。",
+    "starterCode": "function setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n  circle(200, 200, 80);\n}",
+    "answerCode": "function setup() {\n  createCanvas(400, 400);\n  noLoop();\n}\n\nfunction draw() {\n  background(220);\n  circle(200, 200, 80);\n}",
+    "judgeMode": "code-exact"
+  }
+]

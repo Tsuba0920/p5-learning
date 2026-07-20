@@ -1,0 +1,134 @@
+[
+  {
+    "id": "ch11-1",
+    "type": "choice",
+    "title": "引数とは",
+    "description": "関数に引数を指定する主な目的として最も適切なものはどれですか？",
+    "choices": [
+      "関数名を長くするため",
+      "関数の振る舞いを変えるため",
+      "必ず戻り値を作るため",
+      "変数をすべて消すため"
+    ],
+    "correctAnswer": 1,
+    "hint": "circle(x, y, 30) の x や y を思い出しましょう。",
+    "explanation": "引数を使うことで、関数に値を渡して振る舞いを変えることができます。"
+  },
+  {
+    "id": "ch11-2",
+    "type": "choice",
+    "title": "関数定義の形",
+    "description": "引数ありの関数定義として正しいものはどれですか？",
+    "choices": [
+      "function myfunc(x, y) { circle(x, y, 50); }",
+      "myfunc(x, y) { circle(x, y, 50); }",
+      "function myfunc(150, 200) { circle(x, y, 50); }",
+      "function myfunc(let x, let y) { circle(x, y, 50); }"
+    ],
+    "correctAnswer": 0,
+    "hint": "関数定義の引数は変数名で書きます。",
+    "explanation": "関数定義では function 関数名(引数, 引数) { ... } の形で書きます。引数は変数として書きます。"
+  },
+  {
+    "id": "ch11-3",
+    "type": "predict-output",
+    "title": "渡される値",
+    "description": "次のコードで myfunc に渡される y の値は何ですか？",
+    "starterCode": "function setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  myfunc(150, height / 2);\n}\n\nfunction myfunc(x, y) {\n  circle(x, y, 50);\n}",
+    "correctAnswer": "200",
+    "hint": "height は 400 です。",
+    "explanation": "height / 2 は 400 / 2 なので 200 です。関数には式そのものではなく、計算された値が渡されます。"
+  },
+  {
+    "id": "ch11-4",
+    "type": "fix-code",
+    "title": "引数ありの呼び出しに直す",
+    "description": "下のコードは x と y を受け取る関数を呼び出したいプログラムです。まちがいを直してください。",
+    "starterCode": "function setup() {\n  createCanvas(300, 300);\n}\n\nfunction draw() {\n  background(220);\n  myfunc;\n}\n\nfunction myfunc(x, y) {\n  circle(x, y, 50);\n}",
+    "answerCode": "function setup() {\n  createCanvas(300, 300);\n}\n\nfunction draw() {\n  background(220);\n  myfunc(150, 150);\n}\n\nfunction myfunc(x, y) {\n  circle(x, y, 50);\n}",
+    "judgeMode": "code-exact",
+    "hint": "関数呼び出しには () と引数が必要です。",
+    "explanation": "引数ありの関数は、myfunc(150, 150); のように値を渡して呼び出します。"
+  },
+  {
+    "id": "ch11-5",
+    "type": "choice",
+    "title": "引数に書けるもの",
+    "description": "引数として指定できるものの説明として正しいものはどれですか？",
+    "choices": [
+      "数値だけ",
+      "文字列だけ",
+      "変数や式も指定できる",
+      "関数定義では何も指定できない"
+    ],
+    "correctAnswer": 2,
+    "hint": "height / 2 を引数にしていました。",
+    "explanation": "引数には数値や文字列だけでなく、変数や式も指定できます。"
+  },
+  {
+    "id": "ch11-6",
+    "type": "choice",
+    "title": "スコープの種類",
+    "description": "コードの先頭（関数の外）で宣言された変数は何と呼ばれますか？",
+    "choices": [
+      "ローカル変数",
+      "ブロックスコープ変数",
+      "グローバル変数",
+      "引数変数"
+    ],
+    "correctAnswer": 2,
+    "hint": "コード全体のどこからでも使える変数です。",
+    "explanation": "関数の外で宣言された変数はグローバル変数です。コード全体から利用できます。"
+  },
+  {
+    "id": "ch11-7",
+    "type": "choice",
+    "title": "優先される変数",
+    "description": "同じ名前のグローバル変数とローカル変数があるとき、関数の中で優先されるのはどちらですか？",
+    "choices": [
+      "グローバル変数",
+      "ローカル変数",
+      "いつも同じではない",
+      "どちらも使えない"
+    ],
+    "correctAnswer": 1,
+    "hint": "範囲が小さいスコープほど強いです。",
+    "explanation": "同じ名前なら、関数の中ではローカル変数のほうが優先されます。"
+  },
+  {
+    "id": "ch11-8",
+    "type": "predict-output",
+    "title": "スコープの優先順位",
+    "description": "次のコードで最後に表示される x の値は何ですか？",
+    "starterCode": "let x = 1;\n\nfunction setup() {\n  noLoop();\n}\n\nfunction draw() {\n  myfunc(2);\n}\n\nfunction myfunc(x) {\n  for (let x = 3; x <= 3; x += 1) {\n    print(x);\n  }\n}",
+    "correctAnswer": "3",
+    "hint": "for 文の中では、for 文で定義した x が使われます。",
+    "explanation": "for 文の中の x はブロックスコープ変数で、外側のローカル変数やグローバル変数より優先されます。"
+  },
+  {
+    "id": "ch11-9",
+    "type": "choice",
+    "title": "ローカル変数の性質",
+    "description": "ローカル変数について正しい説明はどれですか？",
+    "choices": [
+      "一度作られると、ずっと同じ値を保ち続ける",
+      "関数が終わっても必ず残る",
+      "関数が呼ばれるたびに作られ直すことがある",
+      "コード全体のどこからでも使える"
+    ],
+    "correctAnswer": 2,
+    "hint": "func2 の x は毎回 200 に初期化されていました。",
+    "explanation": "ローカル変数は関数の中だけで有効で、関数が呼ばれるたびに新しく作られ直します。"
+  },
+  {
+    "id": "ch11-10",
+    "type": "fix-code",
+    "title": "引数を使って描く",
+    "description": "下のコードは、渡された x の位置に円を描きたいプログラムです。まちがいを直してください。",
+    "starterCode": "function setup() {\n  createCanvas(400, 100);\n  background(220);\n}\n\nfunction draw() {\n  orangeCircle(200);\n}\n\nfunction orangeCircle() {\n  fill(255, 127, 0);\n  circle(x, height / 2, 50);\n}",
+    "answerCode": "function setup() {\n  createCanvas(400, 100);\n  background(220);\n}\n\nfunction draw() {\n  orangeCircle(200);\n}\n\nfunction orangeCircle(x) {\n  fill(255, 127, 0);\n  circle(x, height / 2, 50);\n}",
+    "judgeMode": "code-exact",
+    "hint": "呼び出し側で 200 を渡しているので、定義側でも受け取る必要があります。",
+    "explanation": "orangeCircle(200); と呼び出しているので、関数定義でも orangeCircle(x) のように引数を受け取る必要があります。"
+  }
+]

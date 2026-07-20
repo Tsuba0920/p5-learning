@@ -21,6 +21,9 @@ const hintButton = document.getElementById("hintButton");
 const answerButton = document.getElementById("answerButton");
 const resetButton = document.getElementById("resetButton");
 
+const chapterToggleEl = document.getElementById("chapterToggle");
+const problemToggleEl = document.getElementById("problemToggle");
+
 function renderChapterList() {
   chapterListEl.innerHTML = "";
 
@@ -43,27 +46,9 @@ function renderChapterList() {
 function renderProblemList() {
   problemListEl.innerHTML = "";
 
-  const progress = typeof loadProgress === "function"
-    ? loadProgress()
-    : { solved: {}, attempts: {} };
-
   appState.currentProblems.forEach((problem, index) => {
     const li = document.createElement("li");
-
-    let mark = "";
-    const isSolved = progress.solved && progress.solved[problem.id];
-    const hasAttempted =
-      progress.attempts &&
-      progress.attempts[problem.id] &&
-      progress.attempts[problem.id] > 0;
-
-    if (isSolved) {
-      mark = "✅ ";
-    } else if (hasAttempted) {
-      mark = "❌ ";
-    }
-
-    li.textContent = mark + problem.title;
+    li.textContent = problem.title;
 
     if (index === appState.currentProblemIndex) {
       li.classList.add("active-item");
@@ -82,6 +67,7 @@ function renderProblem() {
   if (!problem) return;
 
   appState.selectedChoiceIndex = null;
+  appState.hasViewedAnswer = false;
 
   problemTitleEl.textContent = problem.title;
   problemDescriptionEl.textContent = problem.description;
@@ -92,6 +78,7 @@ function renderProblem() {
   clearGraphics(appState.answerGraphics);
 
   answerButton.classList.add("hidden");
+  runButton.disabled = false;
 
   renderByType(problem);
   renderChapterList();
@@ -157,7 +144,7 @@ function renderAnswerPreview(problem) {
 
   if (problem.type === "fix-code" || problem.type === "full-code") {
     try {
-      executeBodyOnGraphics(problem.answerCode, appState.answerGraphics);
+      executeBodyOnGraphics(problem.answerCode, appState.answerGraphics, problem.type);
     } catch (e) {
       console.error("正解プレビュー描画エラー:", e);
     }
@@ -202,4 +189,24 @@ function clearChoiceAnswerColors() {
   buttons.forEach((btn) => {
     btn.classList.remove("choice-correct", "choice-wrong");
   });
+}
+
+function setupSidebarToggles() {
+  if (chapterToggleEl) {
+    chapterToggleEl.addEventListener("click", () => {
+      chapterListEl.classList.toggle("collapsed");
+      chapterToggleEl.textContent = chapterListEl.classList.contains("collapsed")
+        ? "章一覧 ▶"
+        : "章一覧 ▼";
+    });
+  }
+
+  if (problemToggleEl) {
+    problemToggleEl.addEventListener("click", () => {
+      problemListEl.classList.toggle("collapsed");
+      problemToggleEl.textContent = problemListEl.classList.contains("collapsed")
+        ? "問題一覧 ▶"
+        : "問題一覧 ▼";
+    });
+  }
 }
